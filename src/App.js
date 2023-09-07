@@ -4,6 +4,24 @@ import MoviesList from "./components/MoviesList";
 import AddMovie from "./components/AddMovie";
 import "./App.css";
 
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyBhY4Mck5WHujtXsq0cGcM0uS5e3jZfz1Y",
+  authDomain: "star-wars-35963.firebaseapp.com",
+  projectId: "star-wars-35963",
+  storageBucket: "star-wars-35963.appspot.com",
+  messagingSenderId: "522003460426",
+  appId: "1:522003460426:web:e415bc48024e4dc4d151b3",
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
 function App() {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -14,7 +32,7 @@ function App() {
     setError(null);
     try {
       const response = await fetch(
-        "https://star-wars-react-b1316-default-rtdb.firebaseio.com/movies.json"
+        "https://star-wars-35963-default-rtdb.firebaseio.com/movies.json"
       );
       if (!response.ok) {
         throw new Error("Something went wrong!");
@@ -45,7 +63,7 @@ function App() {
 
   async function addMovieHandler(movie) {
     const response = await fetch(
-      "https://star-wars-react-b1316-default-rtdb.firebaseio.com/movies.json",
+      "https://star-wars-35963-default-rtdb.firebaseio.com/movies.json",
       {
         method: "POST",
         body: JSON.stringify(movie),
